@@ -12,13 +12,37 @@ struct HomeView: View {
     @EnvironmentObject var model: ContentModel
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        NavigationView {
+            
+            VStack (alignment: .leading) {
+                
+                Text("What do you want to do today?")
+                    .padding(.leading, 20)
+                
+                ScrollView{
+                    
+                    LazyVStack {
+                        
+                        ForEach(model.modules){module in
+                            
+                            VStack (spacing: 20) {
+                                HomeViewRow(image: module.content.image, description: module.content.description, duration: module.content.time, count: "\(module.content.lessons.count) Lessons", title: "Learn \(module.category)")
+                                
+                                HomeViewRow(image: module.test.image, description: module.test.description, duration: module.test.time, count: "\(module.test.questions.count) Questions", title: "\(module.category) Test")
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Get Started")
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(ContentModel())
     }
 }
