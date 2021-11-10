@@ -12,6 +12,12 @@ class ContentModel: ObservableObject {
     
     // initialize into an empty array
     @Published var modules = [Module]()
+    
+    // current module
+    @Published var currentModule: Module?
+    var currentModuleIndex = 0
+    
+    
     var styleData: Data?
     
     init() {
@@ -19,6 +25,8 @@ class ContentModel: ObservableObject {
      getLocalData()
         
     }
+    
+    // MARK: - Data methods
     
     func getLocalData(){
         
@@ -52,5 +60,22 @@ class ContentModel: ObservableObject {
         }
         
         
+    }
+    
+    // MARK: - Module navigation methods
+    
+    func beginModule(_ moduleid:Int) {
+        
+        // Find the index for this module id
+        for index in 0..<modules.count {
+            
+            if modules[index].id == moduleid {
+                currentModuleIndex = index 
+                break
+            }
+        }
+        
+        // Set the current module
+        currentModule = modules[currentModuleIndex]
     }
 }
