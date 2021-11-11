@@ -12,7 +12,7 @@ struct LearningApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
-            // create an instance of ContentModel
+            // create an instance of ContentModel and delegates to HomeView?
                 .environmentObject(ContentModel())
         }
     }

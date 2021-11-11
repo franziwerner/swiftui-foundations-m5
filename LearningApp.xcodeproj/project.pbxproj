@@ -18,6 +18,10 @@
 		32C322E8273BCFD400A4FB68 /* HomeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C322E7273BCFD400A4FB68 /* HomeViewRow.swift */; };
 		32C322EA273BE35400A4FB68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C322E9273BE35400A4FB68 /* ContentView.swift */; };
 		32C322EC273BEC3A00A4FB68 /* ContentViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C322EB273BEC3A00A4FB68 /* ContentViewRow.swift */; };
+		32D15BB9273D0D5F00CDBD6A /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D15BB8273D0D5F00CDBD6A /* ContentDetailView.swift */; };
+		32D15BBC273D149E00CDBD6A /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D15BBB273D149E00CDBD6A /* AVKit.framework */; };
+		32D15BBE273D183500CDBD6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D15BBD273D183500CDBD6A /* Constants.swift */; };
+		32D15BC0273D32F200CDBD6A /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D15BBF273D32F200CDBD6A /* CodeTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		32C322E7273BCFD400A4FB68 /* HomeViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewRow.swift; sourceTree = "<group>"; };
 		32C322E9273BE35400A4FB68 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32C322EB273BEC3A00A4FB68 /* ContentViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRow.swift; sourceTree = "<group>"; };
+		32D15BB8273D0D5F00CDBD6A /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
+		32D15BBB273D149E00CDBD6A /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		32D15BBD273D183500CDBD6A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		32D15BBF273D32F200CDBD6A /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D15BBC273D149E00CDBD6A /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +60,7 @@
 			children = (
 				3214F8A72722AEC50047F9AE /* LearningApp */,
 				3214F8A62722AEC50047F9AE /* Products */,
+				32D15BBA273D149E00CDBD6A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +102,8 @@
 				32C322E7273BCFD400A4FB68 /* HomeViewRow.swift */,
 				32C322E9273BE35400A4FB68 /* ContentView.swift */,
 				32C322EB273BEC3A00A4FB68 /* ContentViewRow.swift */,
+				32D15BB8273D0D5F00CDBD6A /* ContentDetailView.swift */,
+				32D15BBF273D32F200CDBD6A /* CodeTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,6 +121,7 @@
 			children = (
 				32B5FB03273A92E600B341EF /* data.json */,
 				32B5FB04273A92E600B341EF /* style.html */,
+				32D15BBD273D183500CDBD6A /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -126,6 +139,14 @@
 				3214F8BD2722B4CC0047F9AE /* ContentModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		32D15BBA273D149E00CDBD6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32D15BBB273D149E00CDBD6A /* AVKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,10 +224,13 @@
 				3214F8AB2722AEC50047F9AE /* HomeView.swift in Sources */,
 				32C322E8273BCFD400A4FB68 /* HomeViewRow.swift in Sources */,
 				32C322EA273BE35400A4FB68 /* ContentView.swift in Sources */,
+				32D15BB9273D0D5F00CDBD6A /* ContentDetailView.swift in Sources */,
 				3214F8A92722AEC50047F9AE /* LearningApp.swift in Sources */,
 				32C322EC273BEC3A00A4FB68 /* ContentViewRow.swift in Sources */,
+				32D15BC0273D32F200CDBD6A /* CodeTextView.swift in Sources */,
 				3214F8BE2722B4CC0047F9AE /* ContentModel.swift in Sources */,
 				32B5FB08273A967500B341EF /* Models.swift in Sources */,
+				32D15BBE273D183500CDBD6A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,10 @@ class ContentModel: ObservableObject {
     @Published var currentModule: Module?
     var currentModuleIndex = 0
     
+    // current lesson; views that rely on that published property get automatically updated
+    @Published var currentLesson: Lesson?
+    var currentLessonIndex = 0
+    
     
     var styleData: Data?
     
@@ -77,5 +81,53 @@ class ContentModel: ObservableObject {
         
         // Set the current module
         currentModule = modules[currentModuleIndex]
+    }
+    
+    func beginLesson(_ lessonIndex:Int) {
+     
+        // check whether the lesson index is within the range of module lessons
+        if lessonIndex < currentModule!.content.lessons.count {
+            
+            currentLessonIndex = lessonIndex
+        }
+        else {
+            
+            currentLessonIndex = 0
+        }
+        
+        // set the current lesson
+        currentLesson = currentModule!.content.lessons[currentLessonIndex]
+        
+    }
+    
+    func hasNextLesson() -> Bool {
+        
+        if currentLessonIndex + 1 < currentModule!.content.lessons.count {
+            return true
+        }
+        else {
+            return false
+        }
+        
+        /* short form:
+         return (currentLessonIndex + 1 < currentModule!.content.lessons.count)
+         */
+    }
+    
+    func nextLesson() {
+        
+        currentLessonIndex += 1
+        
+        // check whether currentLessonIndex is still smaller than module lesson count
+        if currentLessonIndex < currentModule!.content.lessons.count {
+            
+            currentLesson = currentModule!.content.lessons[currentLessonIndex]
+        }
+        else {
+            // Reset lesson state
+            currentLessonIndex = 0
+            currentLesson = nil // because is an optional
+        }
+        
     }
 }
