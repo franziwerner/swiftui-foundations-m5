@@ -21,7 +21,7 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
-    
+    @Published var lessonDescription = NSAttributedString()
     var styleData: Data?
     
     init() {
@@ -97,7 +97,8 @@ class ContentModel: ObservableObject {
         
         // set the current lesson
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
-        
+        // set the current lesson description
+        lessonDescription = addStyling(currentLesson!.explanation)
     }
     
     func hasNextLesson() -> Bool {
@@ -122,12 +123,49 @@ class ContentModel: ObservableObject {
         if currentLessonIndex < currentModule!.content.lessons.count {
             
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
+            lessonDescription = addStyling(currentLesson!.explanation)
         }
         else {
             // Reset lesson state
             currentLessonIndex = 0
             currentLesson = nil // because is an optional
         }
-        
     }
+    
+    private func addStyling(_ htmlString: String) -> NSAttributedString {
+        
+        var resultString = NSAttributedString()
+        var data = Data()
+        
+        // Add the styling data
+        if styleData != nil {
+            data.append(styleData!)
+        }
+        
+        // Add html data
+        data.append(Data(htmlString.utf8))
+        
+        // Convert to attributed string
+        // Technique 1: skips this block of code if it was not able to convert to attributed string and proceeds after block of code without throwing an error
+        if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
+            
+            resultString = attributedString
+        }
+        
+        // Technique 2: if it fails converting it will throw an error, so that you are able to respond to that error
+        /*
+        do {
+            
+                let attributedString = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                
+                resultString = attributedString
+        }
+        catch {
+            print("Could not turn html into attributed string")
+        }
+        */
+        
+        return resultString
+    }
+    
 }
