@@ -27,7 +27,7 @@ struct HomeView: View {
                         ForEach(model.modules){module in
                             
                             VStack (spacing: 20) {
-                                    
+                            
                                 NavigationLink(tag: module.id, selection: $model.currentSelectedContent) {
                                     ContentView()
                                         .onAppear {
@@ -37,7 +37,20 @@ struct HomeView: View {
                                     HomeViewRow(image: module.content.image, description: module.content.description, duration: module.content.time, count: "\(module.content.lessons.count) Lessons", title: "Learn \(module.category)")
                                 }
 
-                                HomeViewRow(image: module.test.image, description: module.test.description, duration: module.test.time, count: "\(module.test.questions.count) Questions", title: "\(module.category) Test")
+                                NavigationLink(tag: module.id, selection: $model.currentSelectedTest) {
+                                    TestView()
+                                        .onAppear {
+                                            model.beginTest(module.id)
+                                        }
+                                } label: {
+                                    HomeViewRow(image: module.test.image, description: module.test.description, duration: module.test.time, count: "\(module.test.questions.count) Questions", title: "\(module.category) Test")
+                                }
+                                
+                                /* when single lesson is tapped and you get directly get to homeview, this might help: (iOS 14.5 issue)
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }*/
+                                 
                             }
                         }
                     }

@@ -18,14 +18,20 @@ class ContentModel: ObservableObject {
     var currentModuleIndex = 0
     
     // current lesson; views that rely on that published property get automatically updated
+    // this keeps track of the lesson we are currently on
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
-    @Published var lessonDescription = NSAttributedString()
+    // keeps track of the question we are currently on
+    @Published var currentQuestion: Question?
+    var currentQuestionIndex = 0
+    
+    @Published var codeText = NSAttributedString()
     var styleData: Data?
     
-    // to store current selected user content 
+    // to store current selected user content and test
     @Published var currentSelectedContent:Int?
+    @Published var currentSelectedTest:Int?
     
     init() {
         
@@ -101,7 +107,7 @@ class ContentModel: ObservableObject {
         // set the current lesson
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
         // set the current lesson description
-        lessonDescription = addStyling(currentLesson!.explanation)
+        codeText = addStyling(currentLesson!.explanation)
     }
     
     func hasNextLesson() -> Bool {
@@ -118,6 +124,24 @@ class ContentModel: ObservableObject {
          */
     }
     
+    // because after tapping quiz button, we are going to see directly the first question and not a list of questions...
+    // function needs to set the current module and the current question
+    func beginTest(_ moduleID:Int) {
+        
+        // set the current modul
+        beginModule(moduleID)
+        
+        //set the current question
+        currentQuestionIndex = 0
+        
+        // if there are questions, set the current question to the first one 
+        if currentModule?.test.questions.count ?? 0 > 0 {
+            
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            codeText = addStyling(currentQuestion!.content)
+        }
+    }
+    
     func nextLesson() {
         
         currentLessonIndex += 1
@@ -126,7 +150,7 @@ class ContentModel: ObservableObject {
         if currentLessonIndex < currentModule!.content.lessons.count {
             
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
-            lessonDescription = addStyling(currentLesson!.explanation)
+            codeText = addStyling(currentLesson!.explanation)
         }
         else {
             // Reset lesson state

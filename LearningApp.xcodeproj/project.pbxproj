@@ -23,6 +23,7 @@
 		32D15BBE273D183500CDBD6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D15BBD273D183500CDBD6A /* Constants.swift */; };
 		32D15BC0273D32F200CDBD6A /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D15BBF273D32F200CDBD6A /* CodeTextView.swift */; };
 		32E0FDC72742556100087F5A /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0FDC62742556100087F5A /* RectangleCard.swift */; };
+		32E0FDC927425AF600087F5A /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0FDC827425AF600087F5A /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		32D15BBD273D183500CDBD6A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32D15BBF273D32F200CDBD6A /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		32E0FDC62742556100087F5A /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
+		32E0FDC827425AF600087F5A /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				32C322E9273BE35400A4FB68 /* ContentView.swift */,
 				32C322EB273BEC3A00A4FB68 /* ContentViewRow.swift */,
 				32D15BB8273D0D5F00CDBD6A /* ContentDetailView.swift */,
+				32E0FDC827425AF600087F5A /* TestView.swift */,
 				32D15BBF273D32F200CDBD6A /* CodeTextView.swift */,
 				32E0FDC62742556100087F5A /* RectangleCard.swift */,
 			);
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E0FDC927425AF600087F5A /* TestView.swift in Sources */,
 				3214F8AB2722AEC50047F9AE /* HomeView.swift in Sources */,
 				32C322E8273BCFD400A4FB68 /* HomeViewRow.swift in Sources */,
 				32C322EA273BE35400A4FB68 /* ContentView.swift in Sources */,
