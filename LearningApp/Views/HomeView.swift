@@ -27,8 +27,8 @@ struct HomeView: View {
                         ForEach(model.modules){module in
                             
                             VStack (spacing: 20) {
-                                
-                                NavigationLink {
+                                    
+                                NavigationLink(tag: module.id, selection: $model.currentSelectedContent) {
                                     ContentView()
                                         .onAppear {
                                             model.beginModule(module.id)
