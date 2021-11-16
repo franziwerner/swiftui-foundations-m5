@@ -15,6 +15,21 @@ struct TestView: View {
     @State var numCorrect = 0
     @State var submitted = false
     
+    // computed property
+    var buttonText:String {
+        if submitted == true {
+            if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
+                // This is the last question
+                return "Finish"
+            }
+            else {
+                // There is a next question
+                return "Next"
+            }
+        }
+        else {return "Submit"}
+    }
+    
     var body: some View {
         
         if model.currentQuestion != nil {
@@ -92,20 +107,33 @@ struct TestView: View {
                 // Submit Button
                 
                 Button {
-                    // change state of submitted variable to true
-                    submitted = true
-                    
-                    // increment numCorrect, when answer is correct
-                    if selectedAnswerIndex == model.currentQuestion!.correctIndex {
-                        numCorrect += 1
+                    /* two branches for the action: in case, submitted is still false, a button click will cause the program to jump into the else brackets and perform the action that is written there; tapping on the button sets submitted to true, why the action wihtin the if-statement is performed by tapping the button once again */
+                    // check if answer has been submitted
+                    if submitted == true {
+                        
+                        model.nextQuestion()
+                        
+                        // Reset properties
+                        selectedAnswerIndex = nil
+                        submitted = false
                     }
-                    // TODO: check the answer
+                    else {
+                        // submit the answer
+                    
+                        // change submitted state to true
+                        submitted = true
+                        
+                        // check the answer and increment the counter numCorrect if answer is correct
+                        if selectedAnswerIndex == model.currentQuestion!.correctIndex {
+                            numCorrect += 1
+                        }
+                    }
                 } label: {
                     ZStack {
                         RectangleCard(color: .green)
                             .frame(height: 48)
                             
-                        Text("Submit")
+                        Text(buttonText)
                             .bold()
                             .foregroundColor(Color.white)
                     }
