@@ -147,8 +147,10 @@ struct TestView: View {
             .navigationBarTitle("\(model.currentModule?.category ?? "") Test")
         }
         else {
+            TestResultView(numCorrect: numCorrect)
+            
             // Test has not loaded yet; this is the trigger for onAppear() method; need to be set in order to see the TestView!
-            ProgressView()
+            //ProgressView()
         }
     }
 }
